@@ -1,0 +1,9 @@
+{
+  "name": "portal_escola_de_gestao",
+  "private": true,
+  "dependencies": {},
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Bruno Sartori <brunosartori12@gmail.com>",
+  "license": "MIT"
+}
