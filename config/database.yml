@@ -81,7 +81,7 @@ default: &default
 development:
  adapter: postgresql
  host: localhost
- database: portal_escola_gestao
+ database: autotruck
  username: postgres
- password: 12345
+ password: 123
  pool: 5
