@@ -1,0 +1,56 @@
+
+      <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header card-header-icon card-header-rose">
+                      <div class="card-icon">
+                        <i class="material-icons">assignment</i>
+                      </div>
+                      <h4 class="card-title ">Usuários</h4>
+                    </div>
+                    <div class="col-sm-12">
+              <div id="datatables_filter" class="dataTables_filter text-right">
+                      <%= link_to new_user_path ,class:'btn btn-success' do %>
+                        <span>Novo</span>
+                    <% end %>
+              </div>
+      </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead class=" text-primary">
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Perfil</th>
+                            <th colspan="2"></th>
+                          </thead>
+                          <tbody>
+                          <% @users.each  do |user| %>
+                              <tr>
+                                  <td><%= user.id %> </td>
+                                  <td><%= user&.name %> </td>
+                                  <td><%= user&.email %> </td>
+                                  <td><%= user&.email %> </td>
+                                  <td class="td-actions text-right">
+<!--                                      <button type="button" rel="tooltip" class="btn btn-info">-->
+<!--                                          <i class="material-icons">person</i>-->
+<!--                                      </button>-->
+                                      <%= link_to edit_user_path(user.id),class:'btn btn-success' do %>
+                                          <i class="material-icons">edit</i>
+                                      <% end %>
+                                       <%= link_to user_path(user.id) , method: :delete,class:'btn btn-danger' , data: { confirm: "Deseja realmente excluir?" }  do %>
+                                          <i class="material-icons">close</i>
+                                           <% end %>
+                                      </button>
+                                  </td>
+                              </tr>
+                            <% end %>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
