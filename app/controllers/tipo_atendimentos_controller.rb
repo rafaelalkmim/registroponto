@@ -1,5 +1,6 @@
 class TipoAtendimentosController < ApplicationController
   before_action :set_tipo_atendimento, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /tipo_atendimentos
   # GET /tipo_atendimentos.json
@@ -28,13 +29,14 @@ class TipoAtendimentosController < ApplicationController
 
     respond_to do |format|
       if @tipo_atendimento.save
-        format.html { redirect_to @tipo_atendimento, notice: 'Tipo atendimento was successfully created.' }
-        format.json { render :show, status: :created, location: @tipo_atendimento }
+        format.html { redirect_to tipo_atendimentos_path, notice: 'Tipo de atendimento foi criado com sucesso.' }
+        format.json { render :index, status: :ok, location: @tipo_atendimento }
       else
         format.html { render :new }
         format.json { render json: @tipo_atendimento.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /tipo_atendimentos/1
@@ -42,8 +44,8 @@ class TipoAtendimentosController < ApplicationController
   def update
     respond_to do |format|
       if @tipo_atendimento.update(tipo_atendimento_params)
-        format.html { redirect_to @tipo_atendimento, notice: 'Tipo atendimento was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tipo_atendimento }
+        format.html { redirect_to tipo_atendimentos_path, notice: 'Tipo de atendimento foi atualizado com sucesso.' }
+        format.json { render :index, status: :ok, location: @tipo_atendimento }
       else
         format.html { render :edit }
         format.json { render json: @tipo_atendimento.errors, status: :unprocessable_entity }
@@ -56,7 +58,7 @@ class TipoAtendimentosController < ApplicationController
   def destroy
     @tipo_atendimento.destroy
     respond_to do |format|
-      format.html { redirect_to tipo_atendimentos_url, notice: 'Tipo atendimento was successfully destroyed.' }
+      format.html { redirect_to tipo_atendimentos_url, notice: 'Tipo de atendimento foi excluído com sucesso.' }
       format.json { head :no_content }
     end
   end

@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'flash_rails_messages'
 gem 'devise'
 gem 'devise-i18n'
+gem "select2-rails"
+
+gem 'jquery-mask-plugin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

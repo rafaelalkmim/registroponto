@@ -11,16 +11,19 @@
   <% end %>
 
   <div class="row">
-    <%= f.label "Descrição" , class:"col-sm-2 col-form-label"  %>
-    <div class="col-sm-10">
+    <%= f.label "Descrição", class:"col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
       <div class="form-group">
         <%= f.text_field :descricao, value: @tipo_atendimento&.descricao , class:"form-control" %>
       </div>
     </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+      <%= f.submit "Salvar", class: 'btn btn-primary' %>
+      <%= link_to "Voltar", tipo_atendimentos_path, class: 'btn btn-default' %>
+    </div>
   </div>
 
 <% end %>

@@ -1,0 +1,30 @@
+<%= form_with(model: area, local: true) do |f| %>
+  <% if area.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(area.errors.count, "error") %> prohibited this area from being saved:</h2>
+
+      <ul>
+      <% area.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <%= f.label "Nome", class:"col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.text_field :name, value: @area&.name , class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+      <%= f.submit "Salvar", class: 'btn btn-primary' %>
+      <%= link_to "Voltar", areas_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
