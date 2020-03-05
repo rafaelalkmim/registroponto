@@ -13,4 +13,5 @@
  *= require_self
  *= require material-dashboard.css
  *= require demo.css
+ *= require select2
  */

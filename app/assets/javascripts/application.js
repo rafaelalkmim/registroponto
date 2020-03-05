@@ -20,6 +20,7 @@
 //= require chartist.min.js
 //= require material-dashboard.js
 //= require demo.js
-
-
-
+//= require moment.min.js
+//= require bootstrap-datetimepicker.min.js
+//= require select2
+//=require jquery.mask.min.js
