@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_185043) do
+ActiveRecord::Schema.define(version: 2020_03_05_140622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_185043) do
     t.bigint "profile_id"
     t.string "name"
     t.string "cpf"
+    t.boolean "primeiro_acesso", default: true
     t.index ["area_id"], name: "index_users_on_area_id"
     t.index ["cpf"], name: "index_users_on_cpf", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
