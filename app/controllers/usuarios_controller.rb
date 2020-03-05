@@ -27,7 +27,7 @@ class UsuariosController < ApplicationController
   def create
 
     @user = User.new
-    @user.password = params_user[:cpf]
+    @user.password = params_user[:cpf] rescue "novousuario"
     @user.update(params_user)
 
     respond_to do |format|
@@ -47,11 +47,19 @@ class UsuariosController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
 
+    new_password = current_user.primeiro_acesso && !params_user[:password_confirmation].present?
+
+    if new_password
+      @user.primeiro_acesso = false
+      @user.save
+    end
+
     respond_to do |format|
-      if @user.update(params_user)
+      if (new_password || !current_user.primeiro_acesso) && @user.update(params_user)
         format.html { redirect_to usuarios_url, notice: 'Usuário atualizado com sucesso.' }
         format.json { render :index, status: :ok, location: @user }
       else
+        @user.errors.add(:password, :blank, message: "As senhas digitadas não são semelhantes!") if current_user.primeiro_acesso
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -76,8 +84,9 @@ class UsuariosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def params_user
-    prm = params.require(:user).permit(:name,:cpf,:email,:password,:profile_id,:area_id)
+    prm = params.require(:user).permit(:name,:cpf,:email,:password,:password_confirmation,:profile_id,:area_id,:active)
     prm.delete(:password) if prm[:password].blank?
+    prm.delete(:password_confirmation) if prm[:password] == prm[:password_confirmation]
     prm.delete(:cpf) if prm[:cpf].blank? || prm[:cpf].length != 14
     prm
   end

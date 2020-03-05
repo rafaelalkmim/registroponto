@@ -18,7 +18,7 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="material-icons">email</i>
+                      <i class="material-icons">person</i>
                     </span>
                   </div>
                   <%= f.text_field :cpf, autofocus: true, autocomplete: "cpf" ,class:'form-control', style:'border-radius:5px', placeholder: "CPF", :data => {:mask=> '999.999.999-99'} %>
@@ -45,6 +45,7 @@
                   </div>
                 </div>
               </div>
+              <%= link_to new_user_password_path do %><p class="text-center" style="color: black">Esqueceu sua senha?</p><% end %>
             </div>
           <% end %>
         </div>
