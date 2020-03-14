@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: 2020-03-13
+  entrada1: 2020-03-13 00:08:02
+  saida1: 2020-03-13 00:08:02
+  entrada2: 2020-03-13 00:08:02
+  saida2: 2020-03-13 00:08:02
+  user: one
+
+two:
+  data: 2020-03-13
+  entrada1: 2020-03-13 00:08:02
+  saida1: 2020-03-13 00:08:02
+  entrada2: 2020-03-13 00:08:02
+  saida2: 2020-03-13 00:08:02
+  user: two

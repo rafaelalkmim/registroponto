@@ -7,7 +7,3 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-Profile.create(id: 1, name: "Atendente Relacionamento")
-Profile.create(id: 2, name: "Atendente Sinistro")
-Profile.create(id: 3, name: "Gestor")
-Profile.create(id: 4, name: "Administrador")

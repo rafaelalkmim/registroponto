@@ -1,0 +1,96 @@
+<%= form_with(model: horario, local: true) do |f| %>
+  <% if horario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(horario.errors.count, "error") %> prohibited this horario from being saved:</h2>
+
+      <ul>
+      <% horario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% @horario.user_id = current_user.id if @horario.new_record? %>
+  <div class="row">
+    <%= f.label "Usuário" , class:"col-sm-2 col-form-label"  %>
+    <div class="col-sm-10">
+      <div class="form-group">
+        <%= f.collection_select(:user_id, User.all, :id, :name, {}, class: "select2 form-control", title: "Selecione o Usuário", data: { style: "form-control"}, disabled: !current_user.adm) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.label "Data" , class:"col-sm-2 col-form-label"  %>
+    <div class="col-sm-10">
+      <div class="form-group">
+        <%= f.date_field :data, value: @horario&.data, placeholder: "dd/mm/YYYY", class: "select2 form-control datepicker", required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.label "Entrada 1:" , class:"col-sm-2 col-form-label"  %>
+    <div class="col-sm-10">
+      <div class="form-group">
+        <%= f.time_field :entrada1, value: @horario&.entrada1&.strftime("%H:%M"), min: 'hh:mm:ss', max: 'hh:mm:ss', class: "select2 form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.label "Saída 1:" , class:"col-sm-2 col-form-label"  %>
+    <div class="col-sm-10">
+      <div class="form-group">
+        <%= f.time_field :saida1, value: @horario&.saida1&.strftime("%H:%M"), min: 'hh:mm:ss', max: 'hh:mm:ss', class: "select2 form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.label "Entrada 2:" , class:"col-sm-2 col-form-label"  %>
+    <div class="col-sm-10">
+      <div class="form-group">
+        <%= f.time_field :entrada2, value: @horario&.entrada2&.strftime("%H:%M"), min: 'hh:mm:ss', max: 'hh:mm:ss', class: "select2 form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.label "Saída 2:" , class:"col-sm-2 col-form-label"  %>
+    <div class="col-sm-10">
+      <div class="form-group">
+        <%= f.time_field :saida2, value: @horario&.saida2&.strftime("%H:%M"), min: 'hh:mm:ss', max: 'hh:mm:ss', class: "select2 form-control" %>
+      </div>
+    </div>
+  </div>
+
+
+  </br>
+
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+      <% if @horario.new_record? && !current_user.adm %>
+      <%= f.submit name: "new_record", value: "Salvar" ,class: 'btn btn-primary' %>
+      <% else %>
+      <%= f.submit "Salvar", class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to "Voltar", horarios_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
+
+<script>
+
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            startView: 1,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true});
+    });
+
+</script>

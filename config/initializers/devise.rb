@@ -3,12 +3,16 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+
+  # config/initializers/devise.rb
+  config.authentication_keys = [:email]
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '121caefd9361ef8a722c08ba526de1fa82c1702f838e24ebd87fb065744e7ec5e7a7c1c59ae29aa3a7804865e4dc03504a86287d39073fd39f7672922afbe7c4'
+  # config.secret_key = 'bf4cc509c654fd4aca162f94cb78787de4cadac5e8feef9c9998649c9ee1bd10a044db67e5c7f18708e5600ee8ac0736b31f7ec374207d7230386a3744225e0b'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -41,7 +45,6 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [:email]
-  config.authentication_keys = [:cpf]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -115,7 +118,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '9b06413ab5f3f33c9f34a8edadb67554fd61cdbd23fc37029b48a5e3dc65305dc6c671464aad7ebc7c22b299c8243697412674e83ffd795c84f69ca302603144'
+  # config.pepper = 'b93b8a0d077f9a3dc72dee3ba663b124590a0e10a94e9d2aeaedf6ab92032883c4c048eca6966eaff776060e41c1db3acd15b94dbf5e15914e4494f22b0e4c6a'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false

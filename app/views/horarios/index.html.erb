@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-icon card-header-rose">
+          <div class="card-icon">
+            <i class="material-icons">assignment</i>
+          </div>
+          <h4 class="card-title "><%= @todosHorarios ? "Horários" : "Meus Horários" %></h4>
+        </div>
+        <div class="col-sm-12">
+          <div id="datatables_filter" class="dataTables_filter text-right">
+            <%= link_to new_horario_path ,class:'btn btn-success' do %>
+              <span>Marcar Ponto</span>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+              <th>Usuário</th>
+              <th>Data</th>
+              <th>Entrada 1</th>
+              <th>Saída 1</th>
+              <th>Entrada 2</th>
+              <th>Saída 2</th>
+              <th colspan="2"></th>
+              </thead>
+              <tbody>
+              <% @horarios.each  do |horario| %>
+                <tr>
+                  <td><%= horario.user&.name rescue nil %> </td>
+                  <td><%= horario.data&.strftime("%d/%m/%Y") %> </td>
+                  <td><%= horario&.entrada1&.strftime("%H:%M") %> </td>
+                  <td><%= horario&.saida1&.strftime("%H:%M") %> </td>
+                  <td><%= horario&.entrada2&.strftime("%H:%M") %> </td>
+                  <td><%= horario&.saida2&.strftime("%H:%M") %> </td>
+                  <td class="td-actions text-right">
+                    <%= link_to edit_horario_path(horario.id),class:'btn btn-success' do %>
+                      <i class="material-icons">edit</i>
+                    <% end %>
+                    <%= link_to horario_path(horario.id) , method: :delete,class:'btn btn-danger' , data: { confirm: "Deseja realmente excluir?" }  do %>
+                      <i class="material-icons">delete</i>
+                    <% end %>
+                    </button>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+        

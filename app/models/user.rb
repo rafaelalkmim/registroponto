@@ -1,23 +1,16 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  #
-  devise :database_authenticatable, :authentication_keys => [:cpf]
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :authentication_keys => [:email]
+
+  # Setup accessible (or protected) attributes for your model
+  #attr_accessible :email, :password, :password_confirmation, :remember_me
 
   validates :email, uniqueness: true
-  validates :cpf, uniqueness: true
 
-  belongs_to :profile
-  belongs_to :area
-
-  def email_required?
-    false
-  end
-
-  def email_changed?
-    false
+  def adm
+    self.profile == 1
   end
 
 end

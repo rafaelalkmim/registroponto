@@ -23,7 +23,6 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Área</th>
                             <th>Perfil</th>
                             <th colspan="2"></th>
                           </thead>
@@ -33,18 +32,16 @@
                                   <td><%= user.id %> </td>
                                   <td><%= user&.name %> </td>
                                   <td><%= user&.email %> </td>
-                                  <td><%= user&.area&.name rescue nil %> </td>
-                                  <td><%= user&.profile&.name rescue nil %> </td>
+                                  <td><%= perfil(user&.profile) %></td>
                                   <td class="td-actions text-right">
-<!--                                      <button type="button" rel="tooltip" class="btn btn-info">-->
-<!--                                          <i class="material-icons">person</i>-->
-<!--                                      </button>-->
                                       <%= link_to edit_usuario_path(user.id),class:'btn btn-success' do %>
                                           <i class="material-icons">edit</i>
                                       <% end %>
+                                      <% if current_user.adm %>
                                        <%= link_to usuario_path(user.id) , method: :delete,class:'btn btn-danger' , data: { confirm: "Deseja realmente excluir?" }  do %>
                                           <i class="material-icons">delete</i>
                                            <% end %>
+                                      <% end %>
                                       </button>
                                   </td>
                               </tr>

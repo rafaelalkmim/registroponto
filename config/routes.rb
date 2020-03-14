@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :horarios
   resources :usuarios
-  resources :profiles
-  resources :areas
-  resources :tipo_atendimentos
 
   get 'welcome/index'
 
@@ -12,7 +10,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  root to:'welcome#index'
+  root to:'horarios#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,188 @@
+
+.label {
+  background-color: $light-gray;
+  color: $label-badge-color;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  text-shadow: none;
+}
+
+.badge {
+  background-color: $light-gray;
+  color: $label-badge-color;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  text-shadow: none;
+}
+
+.badge-emandamento {
+  background-color: #ffeb3b;
+  color: #636363;
+}
+
+.badge-atrasado {
+  background-color: #ffeb3b;
+  color: #636363;
+}
+
+.badge-aberto {
+  background-color: #03A9F4;
+  color: #fff;
+}
+
+.badge-fechado {
+  background-color: #68de37;
+  color: #fff;
+}
+
+.badge-teste {
+  background-color: #4e2845;
+  color: #fff;
+}
+
+.badge-fechado {
+  background-color: #68de37;
+  color: #fff;
+}
+
+.badge-validacao {
+  background-color: #3a5f31;
+  color: #fff;
+}
+
+.badge-publicacao {
+  background-color: #0A4F79;
+  color: #fff;
+}
+
+.badge-aguardando {
+  background-color: #CC5302;
+  color: #FFF;
+}
+
+
+.lk-emandamento {
+  color: #92882f;
+}
+
+.lk-atrasado {
+  color: #421519;
+}
+
+.lk-aberto {
+  color: #043d56;
+}
+
+.lk-fechado {
+  color: #3f5f31;
+}
+
+.lk-cancelado {
+  color: rgb(105, 105, 105);
+}
+
+.lk-teste {
+  color: rgb(37, 27, 37);
+}
+
+.lk-validacao {
+  color: #3a5f31;
+}
+
+.lk-publicacao {
+  color: #0A4F79;
+}
+
+.lk-aguardando {
+  color: #CC5302;
+}
+
+
+.tr-aberto {
+  background-color: #f6fdfe !important;
+}
+
+.tr-atrasado {
+  background-color: #fef6f6 !important;
+}
+
+.tr-fechado {
+  background-color: #f6fef8 !important;
+}
+
+.tr-emandamento {
+  background-color: #fefef6 !important;
+}
+
+.tr-cancelado {
+  background-color: #f6fdfe !important;
+}
+
+.tr-teste {
+  background-color: #fef6f6 !important;
+}
+
+.tr-validacao {
+  background-color: #f6fef8 !important;
+}
+
+.tr-publicacao {
+  background-color: #f6fdfe !important;
+}
+
+.tr-aguardando {
+  background-color: #f6fdfe !important;
+}
+
+
+
+.label-primary, .badge-primary {
+  background-color: $navy;
+  color: #FFFFFF;
+}
+
+.label-success, .badge-success {
+  background-color: #52dc39;
+  color: #FFFFFF;
+}
+
+.label-warning, .badge-warning {
+  background-color: $yellow;
+  color: #FFFFFF;
+}
+
+.label-warning-light, .badge-warning-light {
+  background-color: $yellow;
+  color: #ffffff;
+}
+
+.label-danger, .badge-danger {
+  background-color: $red;
+  color: #FFFFFF;
+}
+
+.label-info, .badge-info {
+  background-color: $lazur;
+  color: #FFFFFF;
+}
+
+.label-inverse, .badge-inverse {
+  background-color: #262626;
+  color: #FFFFFF;
+}
+
+.label-white, .badge-white {
+  background-color: #FFFFFF;
+  color: #5E5E5E;
+}
+
+.label-white, .badge-disable {
+  background-color: #2A2E36;
+  color: #8B91A0;
+}

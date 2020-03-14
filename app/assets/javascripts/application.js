@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
-
 //= require jquery.min.js
 //= require popper.min.js
 //= require bootstrap-material-design.min.js
@@ -23,4 +22,4 @@
 //= require moment.min.js
 //= require bootstrap-datetimepicker.min.js
 //= require select2
-//=require jquery.mask.min.js
+//= require jquery.mask.min.js

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>SER - Auto Truck</title>
+  <title>Registro de Ponto</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -14,19 +14,20 @@
   <%= stylesheet_link_tag   'application' %>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+
 </head>
 
 <body class="">
 
 <div class="wrapper ">
-  <div class="sidebar" data-color="rose" data-background-color="black" data-image="/images/bg-login2.jpg" style="background-color: #294356">
+  <div class="sidebar" data-color="rose" data-background-color="black" data-image="/images/loginbackground.png" style="background-color: #294356">
 
     <div class="logo">
 
-      <a href="" class="simple-text logo-mini">
+<!--      <a href="" class="simple-text logo-mini">-->
 
         <a href="<%= root_path %>" class="simple-text logo-normal">
-          <img src="/images/aquila_novo.png" alt="aquila" width=110 height=40>
+          <p>Registro de Ponto</p>
         </a>
 
     </div>
@@ -34,53 +35,57 @@
     <div class="sidebar-wrapper">
 
       <div class="user">
-        <!-- <div class="photo">
-            <img src="../assets/img/faces/avatar.jpg" />
-          </div> -->
         <div class="user-info">
           <a data-toggle="collapse" href="#collapseExample" class="username">
-              <span class="text-center">
-                Administrador
+              <span class="text-left">
+                <%= current_user.name rescue current_user.email %>
                 <b class="caret"></b>
               </span>
           </a>
           <div class="collapse" id="collapseExample">
             <ul class="nav">
               <li class="nav-item">
-                <%= link_to usuarios_path ,:class => 'nav-link' do %>
-                  <i class="material-icons">person</i>
-                  <p>Usuários</p>
+                <%= link_to edit_usuario_path(current_user.id) ,:class => 'nav-link' do %>
+                  <i class="material-icons">account_circle</i>
+                  <p>Meu perfil</p>
                 <% end %>
               </li>
 
               <li class="nav-item">
-                <%= link_to areas_path ,:class => 'nav-link' do %>
-                  <i class="material-icons">apartment</i>
-                  <p>Áreas de Atendimento</p>
+                <%= link_to destroy_user_session_path ,:class => 'nav-link' do %>
+                  <i class="material-icons">close</i>
+                  <p>Logout</p>
                 <% end %>
               </li>
 
-              <li class="nav-item">
-                <%= link_to tipo_atendimentos_path ,:class => 'nav-link' do %>
-                  <i class="material-icons">event</i>
-                  <p>Tipos de Atendimento</p>
-                <% end %>
-              </li>
             </ul>
           </div>
         </div>
       </div>
 
       <ul class="nav">
+        <% if current_user.adm %>
+        <li class="nav-item">
+          <%= link_to horarios_path(horarios: "all") ,:class => 'nav-link' do %>
+            <i class="material-icons">alarm</i>
+            <p>Horários</p>
+          <% end %>
+        </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to horarios_path ,:class => 'nav-link' do %>
+            <i class="material-icons">alarm</i>
+            <p>Meus Horários</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to usuarios_path ,:class => 'nav-link' do %>
+            <i class="material-icons">person</i>
+            <p>Usuários</p>
+          <% end %>
+        </li>
 
-<!--        <li class="nav-item">-->
-          <%#= link_to usuarios_path ,:class => 'nav-link' do %>
-<!--            <i class="material-icons">person</i>-->
-<!--            <p>Usuários</p>-->
-          <%# end %>
-<!--        </li>-->
 
-        <!-- your sidebar here -->
       </ul>
     </div>
   </div>
@@ -151,8 +156,27 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <%= javascript_include_tag 'application' %>
 <script>
+
+      $(document).ready(function(){
+          $('.datepicker').datepicker({
+              format: "dd/mm/yyyy",
+              startView: 1,
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              autoclose: true});
+      });
+
+      $(".select2").select2({
+          placeholder: 'Selecione..',
+          allowClear: true
+      });
+
+
     $(document).ready(function() {
         $().ready(function() {
             $sidebar = $('.sidebar');

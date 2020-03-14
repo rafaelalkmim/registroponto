@@ -16,16 +16,7 @@
     <%= f.label "Nome" , class:"col-sm-2 col-form-label"  %>
     <div class="col-sm-10">
       <div class="form-group">
-        <%= f.text_field :name, value: user&.name , class:"form-control", disabled: current_user.primeiro_acesso %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <%= f.label "CPF" , class:"col-sm-2 col-form-label"  %>
-    <div class="col-sm-10">
-      <div class="form-group">
-        <%= f.text_field :cpf, value: user&.cpf , class:"form-control", :data => {:mask=> '999.999.999-99'}, disabled: current_user.primeiro_acesso  %>
+        <%= f.text_field :name, value: user&.name , class:"form-control", disabled: !current_user.adm %>
       </div>
     </div>
   </div>
@@ -34,57 +25,27 @@
     <%= f.label :email , class:"col-sm-2 col-form-label"  %>
     <div class="col-sm-10">
       <div class="form-group">
-        <%= f.text_field :email, value: user&.email , class:"form-control", disabled: current_user.primeiro_acesso %>
+        <%= f.text_field :email, value: user&.email , class:"form-control", disabled: !current_user.adm %>
       </div>
     </div>
   </div>
 
-  <% if !@user.new_record? %>
   <div class="row">
     <%= f.label :Senha , class:"col-sm-2 col-form-label"  %>
     <div class="col-sm-10">
       <div class="form-group">
-        <%= f.text_field :password, id: 'password', class:"form-control", type:"password", required: current_user.primeiro_acesso %>
+        <%= f.text_field :password, id: 'password', class:"form-control", type:"password", required: user&.password.nil?, disabled: (current_user.id != user.id) && !current_user.adm  %>
       </div>
     </div>
   </div>
-  <% end %>
-  <% if current_user.primeiro_acesso && current_user.id == user.id %>
-    <div class="row">
-      <%= f.label "Repita a senha" , class:"col-sm-2 col-form-label"  %>
-      <div class="col-sm-10">
-        <div class="form-group">
-          <%= f.text_field :password_confirmation, id: 'password2', class:"form-control", type:"password", required: current_user.primeiro_acesso %>
-        </div>
-      </div>
-    </div>
-  <% end %>
 
   <div class="row">
-    <%= f.label "Área" , class:"col-sm-2 col-form-label"  %>
+    <%= f.label "Tipo" , class:"col-sm-2 col-form-label"  %>
     <div class="col-sm-10">
       <div class="form-group">
-        <%= f.collection_select(:area_id, Area.all, :id, :name, {}, class: "select2 form-control", title: "Selecione a Área", data: { style: "form-control"}, disabled: current_user.primeiro_acesso) %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <%= f.label :Perfil , class:"col-sm-2 col-form-label"  %>
-    <div class="col-sm-10">
-      <div class="form-group">
-        <div class="form-group">
-          <%= f.collection_select(:profile_id, Profile.all, :id, :name, {}, class: "select2 form-control", title: "Selecione o Perfil", data: { style: "form-control"}, disabled: current_user.primeiro_acesso) %>
+          <%= f.select :profile, [['Administrador', 1], ['Usuário', 2]], {},
+                       {class:"select2 form-control", style: 'width: 100%;', value: perfil(current_user.profile), 'data-placeholder':'Selecione...', disabled: !current_user.adm} %>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <%= f.label "Ativo" , class:"col-sm-2 col-form-label", disabled: current_user.primeiro_acesso  %>
-    <div class="col-sm-10">
-      <div class="form-group" style="margin-top: 16px;">
-        <%= f.check_box :active %>
       </div>
     </div>
   </div>
@@ -93,11 +54,7 @@
 
   <div class="form-group">
     <div class="col-sm-4 col-sm-offset-2">
-      <%# if current_user.primeiro_acesso %>
-        <%#= f.submit "Salvar", :onclick => 'return comparaSenhas()', class: 'btn btn-primary' %>
-      <%# else %>
-        <%= f.submit "Salvar", class: 'btn btn-primary' %>
-      <%# end %>
+        <%= f.submit "Salvar", class: 'btn btn-primary', disabled: (current_user.id != user.id) && !current_user.adm %>
       <%= link_to "Voltar", usuarios_path, class: 'btn btn-default' %>
     </div>
   </div>
@@ -106,16 +63,6 @@
 
 <% content_for :javascript do %>
   <script type="text/javascript">
-
-      function comparaSenhas(){
-          alert("aqui")
-          if (document.getElementById("password").value != document.getElementById("password2").value) {
-              alert("As senhas digitadas não são semelhantes!");
-              return false;
-          };
-      };
-
-      $('#cpf').mask('000.000.000-00', {reverse: true});
 
       $(".select2").select2({
           placeholder: 'Selecione..',

@@ -1,29 +1,62 @@
-<h2>Sign up</h2>
+<div class="wrapper wrapper-full-page">
+  <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('/images/loginbackground.png'); background-size: cover; background-position: top center;">
+    <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :cpf %><br />
-    <%= f.email_field :cpf, autofocus: true, autocomplete: "email" %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="card card-login card-hidden">
+              <div class="card-header text-center" style="border-radius: 10px">
+                <img src="/images/clock.png" width="50" height="50" style="border-radius: 10px;margin-top: 50px;">
+                <h3 class="card-title">Registro de Ponto</h3>
+              </div>
+              <div class="card-body ">
+              <span class="bmd-form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">person</i>
+                    </span>
+                  </div>
+                  <%= f.text_field :email, autofocus: true, autocomplete: "email" ,class:'form-control', style:'border-radius:5px', placeholder: "Email" %>
+                </div>
+              </span>
+                </br>
+                <span class="bmd-form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                  </div>
+                  <%= f.password_field :password, autocomplete: "current-password", class:'form-control', style:'border-radius:5px', placeholder: "Senha" %>
+                </div>
+              </span>
+                </br>
+                <span class="bmd-form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                  </div>
+                  <%= f.password_field :password_confirmation, autocomplete: "current-password", class:'form-control', style:'border-radius:5px', placeholder: "Confirmar Senha" %>
+                </div>
+              </span>
+              </div>
+              <div class="card-footer justify-content-center">
+                <div class="form-group">
+                  <div class="col-sm-4 col-sm-offset-2">
+                    <%= f.submit "Registrar", class: 'btn btn-primary', style: 'background-color:black;border-radius:5px' %>
+                  </div>
+                </div>
+              </div>
+              <%= link_to root_path do %><p class="text-center" style="color: black">Voltar</p><% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

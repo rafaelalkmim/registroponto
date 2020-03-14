@@ -1,0 +1,19 @@
+.chart-style {
+    background-color: white;
+    padding: 2px;
+}
+
+.chart_emp-style {
+    background-color: white;
+    padding: 2px;
+}
+
+.chart_inner {
+    width: 1200px;
+    height: 400px;
+}
+
+.chart_emp_inner {
+    width: 1200px;
+    height: 800px;
+}

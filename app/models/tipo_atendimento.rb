@@ -1,2 +1,0 @@
-class TipoAtendimento < ApplicationRecord
-end

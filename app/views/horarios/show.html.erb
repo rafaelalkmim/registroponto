@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @horario.data %>
+</p>
+
+<p>
+  <strong>Entrada1:</strong>
+  <%= @horario.entrada1 %>
+</p>
+
+<p>
+  <strong>Saida1:</strong>
+  <%= @horario.saida1 %>
+</p>
+
+<p>
+  <strong>Entrada2:</strong>
+  <%= @horario.entrada2 %>
+</p>
+
+<p>
+  <strong>Saida2:</strong>
+  <%= @horario.saida2 %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @horario.user %>
+</p>
+
+<%= link_to 'Edit', edit_horario_path(@horario) %> |
+<%= link_to 'Back', horarios_path %>

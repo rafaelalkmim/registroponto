@@ -29,7 +29,7 @@ end
 
 # With custom Devise parent controller
 # config/initializers/devise.rb
-config.parent_controller = 'MyBaseDeviseController'
+# config.parent_controller = 'MyBaseDeviseController'
 
 # Controller
 class MyBaseDeviseController < ApplicationController
